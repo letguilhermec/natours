@@ -39,6 +39,12 @@ const handleDuplicateFieldsDB = err => {
   return new AppError(message, 400)
 }
 
+const handleValidationError = err => {
+  const errors = Object.values(err.errors).map(error => error.message)
+  const message = `Invalid input data. ${errors.join('. ')}`
+  return new AppError(message, 400)
+}
+
 module.exports = (err, req, res, next) => {
   err.statusCode = err.statusCode || 500
   err.status = err.status || 'error'
@@ -49,6 +55,7 @@ module.exports = (err, req, res, next) => {
     let newErr = { ...err }
     if (err.name === 'CastError') newErr = handleCastErrorDB(newErr)
     if (err.code === 11000) newErr = handleDuplicateFieldsDB(newErr)
+    if (err.name === 'ValidationError') newErr = handleValidationError(newErr)
     prodError(newErr, res)
   }
 
