@@ -16,12 +16,6 @@ app.use(express.json())
 //  SERVE STATIC FILES
 app.use(express.static(`${__dirname}/public`))
 
-//  OWN MIDDLEWARE
-app.use((req, res, next) => {
-  console.log('Hello from the middleware 🙋')
-  next()
-})
-
 app.use('/api/v1/tours', tourRouter)
 app.use('/api/v1/users', userRouter)
 
