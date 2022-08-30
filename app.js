@@ -39,7 +39,16 @@ app.use(mongoSanitize())
 app.use(xss())
 
 //  Prevent parameter polution
-app.use(hpp())
+app.use(hpp({
+  whitelist: [
+    'duration',
+    'ratingsAverage',
+    'ratingsQuantity',
+    'maxGroupSize',
+    'difficulty',
+    'price'
+  ]
+}))
 
 //  Serve static files
 app.use(express.static(`${__dirname}/public`))
