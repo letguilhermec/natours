@@ -1,4 +1,5 @@
 const express = require('express')
+const rateLimit = require('express-rate-limit')
 const morgan = require('morgan')
 const AppError = require('./utils/appError')
 const errorHandler = require('./controllers/errorController')
@@ -12,14 +13,20 @@ const app = express()
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'))
 }
+
+//  RATE-LIMITING 
+const limiter = rateLimit({
+  max: 100,
+  windowMs: 60 * 60 * 1000,
+  message: 'Too many requests from this IP. Please try again in an hour!'
+})
+app.use('/api', limiter)
+
 app.use(express.json())
 
 //  SERVE STATIC FILES
 app.use(express.static(`${__dirname}/public`))
 
-/*app.use((req, res, next) => {
-  console.log(req.headers)
-})*/
 
 app.use('/api/v1/tours', tourRouter)
 app.use('/api/v1/users', userRouter)
