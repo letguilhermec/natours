@@ -2,7 +2,7 @@ const express = require('express')
 
 //  FUNCTIONS
 const { getAllUsers, createUser, getUser, updateUser, deleteUser } = require('../controllers/userController')
-const { signup, login, forgotPass, resetPass } = require('../controllers/authController')
+const { signup, login, protect, forgotPass, resetPass, updatePass } = require('../controllers/authController')
 
 //  ROUTER
 const router = express.Router()
@@ -18,6 +18,9 @@ router
 
 router
   .patch('/resetPassword/:token', resetPass)
+
+router
+  .patch('/updateMyPassword', protect, updatePass)
 
 router
   .route('/')

@@ -1,4 +1,5 @@
 const User = require('../models/userModel')
+const AppError = require('../utils/appError')
 const catchAsync = require('../utils/catchAsync')
 
 //  FUNCTIONS
@@ -35,10 +36,18 @@ exports.updateUser = (req, res) => {
   })
 }
 
-
 exports.deleteUser = (req, res) => {
   res.status(500).json({
     status: 'error',
     message: 'Endpoint not yet implemented'
   })
+}
+
+exports.updateMe = (req, res, next) => {
+  //  Throw error if user tries to update password
+  if (req.body.password || req.body.passwordConfirm) {
+    return next(new A)
+  }
+
+  //  Update user document
 }
