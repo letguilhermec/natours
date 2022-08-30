@@ -24,6 +24,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: [true, 'Please provide a password.'],
       minlength: [8, 'Password must have at least 8 characters.'],
+      select: false,
     },
     passwordConfirm: {
       type: String,
@@ -36,6 +37,7 @@ const userSchema = new mongoose.Schema(
         message: 'Passwords must match.',
       },
     },
+    passwordChangedAt: Date,
   }
 )
 
@@ -46,6 +48,23 @@ userSchema.pre('save', async function(next) {
   this.passwordConfirm = undefined
   next()
 })
+
+userSchema.pre('updateOne', function() {
+  this.passwordChangedAt = Date.now()
+})
+
+userSchema.methods.correctPass = async function(candidate, correct) {
+  return await bcrypt.compare(candidate, correct)
+}
+
+userSchema.methods.changedPass = async function(JWTTimestamp) {
+  if (this.passwordChangedAt) {
+    const changedTimestamp = parseInt(this.passwordChangedAt.getTime() / 1000, 10)
+    return JWTTimestamp < changedTimestamp
+  }
+
+  return false
+}
 
 const User = mongoose.model('User', userSchema)
 

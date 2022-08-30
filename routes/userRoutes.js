@@ -2,13 +2,16 @@ const express = require('express')
 
 //  FUNCTIONS
 const { getAllUsers, createUser, getUser, updateUser, deleteUser } = require('../controllers/userController')
-const { signup } = require('../controllers/authController')
+const { signup, login } = require('../controllers/authController')
 
 //  ROUTER
 const router = express.Router()
 
 router
   .post('/signup', signup)
+
+router
+  .post('/login', login)
 
 router
   .route('/')

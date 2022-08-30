@@ -12,18 +12,33 @@ const {
   getMonthlyPan,
 } = require('../controllers/tourController')
 
+const { protect } = require('../controllers/authController')
+
 //  ROUTER
 const router = express.Router()
 
 //  ROUTES
-router.route('/tour-stats').get(getTourStats)
+router
+  .route('/tour-stats')
+  .get(getTourStats)
 
-router.route('/monthly-plan/:year').get(getMonthlyPan)
+router
+  .route('/monthly-plan/:year')
+  .get(getMonthlyPan)
 
-router.route('/top-5-cheap').get(aliasTopTours, getAllTours)
+router
+  .route('/top-5-cheap')
+  .get(aliasTopTours, getAllTours)
 
-router.route('/').get(getAllTours).post(createTour)
+router
+  .route('/')
+  .get(protect, getAllTours)
+  .post(createTour)
 
-router.route('/:id').get(getTour).patch(updateTour).delete(deleteTour)
+router
+  .route('/:id')
+  .get(getTour)
+  .patch(updateTour)
+  .delete(deleteTour)
 
 module.exports = router
