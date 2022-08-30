@@ -1,5 +1,6 @@
 const express = require('express')
 const rateLimit = require('express-rate-limit')
+const helmet = require('helmet')
 const morgan = require('morgan')
 const AppError = require('./utils/appError')
 const errorHandler = require('./controllers/errorController')
@@ -10,11 +11,15 @@ const userRouter = require('./routes/userRoutes')
 const app = express()
 
 //  MIDDLEWARE
+//  Set secure HTTP headers
+app.use(helmet())
+
+//  Development logging
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'))
 }
 
-//  RATE-LIMITING 
+//  Limit requests from the same IP
 const limiter = rateLimit({
   max: 100,
   windowMs: 60 * 60 * 1000,
@@ -22,11 +27,11 @@ const limiter = rateLimit({
 })
 app.use('/api', limiter)
 
-app.use(express.json())
+//  Body parser -> reads data from req.body
+app.use(express.json({ limit: '10kb' }))
 
-//  SERVE STATIC FILES
+//  Serve static files
 app.use(express.static(`${__dirname}/public`))
-
 
 app.use('/api/v1/tours', tourRouter)
 app.use('/api/v1/users', userRouter)
