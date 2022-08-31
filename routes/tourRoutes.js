@@ -9,13 +9,16 @@ const {
   updateTour,
   deleteTour,
   getTourStats,
-  getMonthlyPan,
+  getMonthlyPlan,
 } = require('../controllers/tourController')
-
 const { protect, restrictTo } = require('../controllers/authController')
+const reviewRouter = require('../routes/reviewRoutes')
 
 //  ROUTER
 const router = express.Router()
+
+//  Mounting a router for nested route
+router.use('/:tourId/reviews', reviewRouter)
 
 //  ROUTES
 router
@@ -24,7 +27,11 @@ router
 
 router
   .route('/monthly-plan/:year')
-  .get(getMonthlyPan)
+  .get(
+    protect,
+    restrictTo('admin', 'lead-guide', 'guide'),
+    getMonthlyPlan
+  )
 
 router
   .route('/top-5-cheap')
@@ -32,13 +39,17 @@ router
 
 router
   .route('/')
-  .get(protect, getAllTours)
-  .post(createTour)
+  .get(getAllTours)
+  .post(protect, restrictTo('admin', 'lead-guide'), createTour)
 
 router
   .route('/:id')
   .get(getTour)
-  .patch(updateTour)
+  .patch(
+    protect,
+    restrictTo('admin', 'lead-guide'),
+    updateTour
+  )
   .delete(
     protect,
     restrictTo('admin', 'lead-guide'),
