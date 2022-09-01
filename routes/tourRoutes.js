@@ -10,6 +10,8 @@ const {
   deleteTour,
   getTourStats,
   getMonthlyPlan,
+  getTourWithin,
+  getDistances,
 } = require('../controllers/tourController')
 const { protect, restrictTo } = require('../controllers/authController')
 const reviewRouter = require('../routes/reviewRoutes')
@@ -36,6 +38,14 @@ router
 router
   .route('/top-5-cheap')
   .get(aliasTopTours, getAllTours)
+
+router
+  .route('/tours-within/:distance/center/:latlng/unit/:unit')
+  .get(getTourWithin)
+
+router
+  .route('/distances/:latlng/unit/:unit')
+  .get(getDistances)
 
 router
   .route('/')
