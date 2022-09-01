@@ -1,3 +1,4 @@
+const path = require('path')
 const express = require('express')
 const rateLimit = require('express-rate-limit')
 const helmet = require('helmet')
@@ -13,6 +14,9 @@ const userRouter = require('./routes/userRoutes')
 const reviewRouter = require('./routes/reviewRoutes')
 
 const app = express()
+
+app.set('view engine', 'pug')
+app.set('views', path.join(__dirname, 'views'))
 
 //  MIDDLEWARE
 //  Set secure HTTP headers
@@ -52,7 +56,15 @@ app.use(hpp({
 }))
 
 //  Serve static files
-app.use(express.static(`${__dirname}/public`))
+app.use(express.static(path.join(__dirname, 'public')))
+
+
+app.get('/', (req, res, next) => {
+  res.status(200).render('base', {
+    tour: 'Tour test!!!!!!',
+    user: 'Guigas'
+  })
+})
 
 app.use('/api/v1/tours', tourRouter)
 app.use('/api/v1/users', userRouter)
