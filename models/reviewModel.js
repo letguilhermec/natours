@@ -34,6 +34,7 @@ const reviewSchema = new mongoose.Schema(
   }
 )
 
+//  Prevents a user from posting more than 1 review per tour
 reviewSchema.index({ tour: 1, user: 1 }, { unique: true })
 
 reviewSchema.pre(/^find/, function(next) {
