@@ -7,17 +7,10 @@ const { signup, login, protect, forgotPass, resetPass, updatePass, restrictTo } 
 //  ROUTER
 const router = express.Router()
 
-router
-  .post('/signup', signup)
-
-router
-  .post('/login', login)
-
-router
-  .post('/forgotPassword', forgotPass)
-
-router
-  .patch('/resetPassword/:token', resetPass)
+router.post('/signup', signup)
+router.post('/login', login)
+router.post('/forgotPassword', forgotPass)
+router.patch('/resetPassword/:token', resetPass)
 
 router.use(protect)
 router.get('/me', getMe, getUser)
