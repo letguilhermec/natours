@@ -2,6 +2,8 @@ extends base
 
 block prepend head
   script(src='/js/mapbox.js' defer)
+  script(src='https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js')
+  link(href='https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css' rel='stylesheet')
 
 mixin overviewBox(label, text, icon)
   .overview-box__detail

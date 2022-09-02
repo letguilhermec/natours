@@ -21,7 +21,10 @@ app.set('views', path.join(__dirname, 'views'))
 
 //  MIDDLEWARE
 //  Set secure HTTP headers
-app.use(helmet())
+app.use(helmet({
+  contentSecurityPolicy: false,
+  crossOriginEmbedderPolicy: false
+}))
 
 //  Development logging
 if (process.env.NODE_ENV === 'development') {
