@@ -1,5 +1,8 @@
 extends base
 
+block prepend head
+  script(src='/js/mapbox.js' defer)
+
 mixin overviewBox(label, text, icon)
   .overview-box__detail
     svg.overview-box__icon
@@ -67,7 +70,7 @@ block content
         img.picture-box__img(src=`/img/tours/${picture}`, alt=`${tour.name} ${index + 1}`, class=`picture-box__img--${index + 1}`)
 
   section.section-map
-    #map
+    #map(data-locations=`${JSON.stringify(tour.locations)}`)
 
   section.section-reviews
     .reviews
@@ -79,9 +82,9 @@ block content
     .cta
       .cta__img.cta__img--logo
         img(src='/img/logo-white.png', alt='Natours logo')
-      img.cta__img.cta__img--1(src=`/img/tours/${tour.images[0]}`, alt='')
-      img.cta__img.cta__img--2(src=`/img/tours/${tour.images[1]}`, alt='')
+      img.cta__img.cta__img--1(src=`/img/tours/${tour.images[0]}`, alt='Tour picture')
+      img.cta__img.cta__img--2(src=`/img/tours/${tour.images[1]}`, alt='Tour picture')
       .cta__content
         h2.heading-secondary What are you waiting for?
-        p.cta__text 10 days. 1 adventure. Infinite memories. Make it yours today!
+        p.cta__text= `${tour.duration} days. 1 adventure. Infinite memories. Make it yours today!`
         button.btn.btn--green.span-all-rows Book tour now!
