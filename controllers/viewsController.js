@@ -1,7 +1,7 @@
 const Tour = require('../models/tourModel')
 const catchAsync = require('../utils/catchAsync')
 
-exports.getOverview = catchAsync(async (req, res) => {
+exports.getOverview = catchAsync(async (req, res, next) => {
   //  Get All Tours from collection
   const tours = await Tour.find()
 
@@ -12,7 +12,7 @@ exports.getOverview = catchAsync(async (req, res) => {
   })
 })
 
-exports.getTour = catchAsync(async (req, res) => {
+exports.getTour = catchAsync(async (req, res, next) => {
   //  Get the data for requested tour
   const tour = await Tour
     .findOne({ slug: req.params.tourSlug })
@@ -26,3 +26,9 @@ exports.getTour = catchAsync(async (req, res) => {
     title: `${tour.name} Tour`
   })
 })
+
+exports.login = (req, res) => {
+  res.status(200).render('login', {
+    title: 'Log into your accont'
+  })
+}
