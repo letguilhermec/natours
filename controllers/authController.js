@@ -11,12 +11,13 @@ const signToken = id => {
   return jwt.sign(
     { id },
     process.env.JWT_SECRET,
-    { expiresIn: process.env.JWT_CONFIG }
+    { expiresIn: process.env.JWT_COOKIE_EXPIRES_IN }
   )
 }
 
 const createAndSendToken = (user, statusCode, res) => {
   const token = signToken(user._id)
+
   const cookieOptions = {
     expires: new Date(
       Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
@@ -41,6 +42,7 @@ const createAndSendToken = (user, statusCode, res) => {
       }
     })
 }
+
 
 exports.signup = catchAsync(async (req, res, next) => {
   const newUser = await User.create({

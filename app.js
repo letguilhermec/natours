@@ -5,7 +5,9 @@ const helmet = require('helmet')
 const mongoSanitize = require('express-mongo-sanitize')
 const xss = require('xss-clean')
 const morgan = require('morgan')
+const cors = require('cors')
 const hpp = require('hpp')
+const cookieParser = require('cookie-parser')
 const AppError = require('./utils/appError')
 const errorHandler = require('./controllers/errorController')
 
@@ -15,6 +17,8 @@ const reviewRouter = require('./routes/reviewRoutes')
 const viewsRouter = require('./routes/viewRoutes')
 
 const app = express()
+
+app.use(cors())
 
 app.set('view engine', 'pug')
 app.set('views', path.join(__dirname, 'views'))
@@ -41,6 +45,7 @@ app.use('/api', limiter)
 
 //  Body parser -> reads data from req.body
 app.use(express.json({ limit: '10kb' }))
+app.use(cookieParser())
 
 //  Data sanitization against noSQL query injection
 app.use(mongoSanitize())
@@ -58,6 +63,11 @@ app.use(hpp({
     'price'
   ]
 }))
+
+app.use((req, res, next) => {
+  console.log(req.cookies)
+  next()
+})
 
 //  Serve static files
 app.use(express.static(path.join(__dirname, 'public')))
