@@ -108,6 +108,30 @@ exports.protect = catchAsync(async (req, res, next) => {
   next()
 })
 
+//  Only for rendering pages w/ logged in user details / No errors
+exports.isLoggedIn = catchAsync(async (req, res, next) => {
+  if (req.cookies.jwt) {
+    //  Validate token
+    const payload = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRET)
+
+    //  Check if user still exists
+    const user = await User.findById(payload.id)
+    if (!user) {
+      return next()
+    }
+
+    //  Check if user changed password after the token was issued
+    if (user.changedPass(payload.iat)) {
+      //  --- Change message / Too revealing
+      return next()
+    }
+
+    //  Make user accessible for template
+    res.locals.user = user
+  }
+  next()
+})
+
 exports.restrictTo = (...roles) => {
   return (req, res, next) => {
     //  Roles -> Array []

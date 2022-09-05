@@ -9,9 +9,15 @@ const login = async (email, password) => {
       },
     })
 
-    console.log(response)
+    if (response.data.status === 'success') {
+      alert('Logged in successfully!')
+      window.setTimeout(() => {
+        location.assign('/')
+      }, 1500)
+    }
+
   } catch (err) {
-    console.log(err.response.data)
+    alert(err.response.data.message)
   }
 }
 
