@@ -64,10 +64,10 @@ app.use(hpp({
   ]
 }))
 
-app.use((req, res, next) => {
+/*app.use((req, res, next) => {
   console.log(req.cookies)
   next()
-})
+})*/
 
 //  Serve static files
 app.use(express.static(path.join(__dirname, 'public')))
