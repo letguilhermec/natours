@@ -1,4 +1,8 @@
-const login = async (email, password) => {
+import axios from 'axios'
+import { showAlert } from './alerts'
+
+export const login = async (email, password) => {
+  console.log(email, password)
   try {
     const response = await axios({
       method: 'POST',
@@ -10,22 +14,34 @@ const login = async (email, password) => {
     })
 
     if (response.data.status === 'success') {
-      alert('Logged in successfully!')
+      showAlert('success', 'Logged in successfully!')
       window.setTimeout(() => {
         location.assign('/')
       }, 1500)
     }
 
   } catch (err) {
-    alert(err.response.data.message)
+    showAlert('error', err.response.data.message)
   }
 }
 
-document.querySelector('.form').addEventListener('submit', e => {
-  e.preventDefault()
+export const logout = async () => {
+  try {
+    const response = await axios({
+      method: 'GET',
+      url: 'http://127.0.0.1:8000/api/v1/users/logout'
+    })
 
-  const email = document.getElementById('email').value
-  const password = document.getElementById('password').value
+    if (response.data.status === 'success') {
+      showAlert('success', 'Logged out successfully!')
+      window.setTimeout(() => {
+        location.reload(true)
+      }, 1500)
+    }
 
-  login(email, password)
-})
+  } catch {
+    showAlert('error', 'Error logging out! Please, try again.')
+  }
+}
+
+

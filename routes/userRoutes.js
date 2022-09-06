@@ -2,13 +2,14 @@ const express = require('express')
 
 //  FUNCTIONS
 const { getAllUsers, createUser, getUser, updateUser, deleteUser, updateMe, deleteMe, getMe } = require('../controllers/userController')
-const { signup, login, protect, forgotPass, resetPass, updatePass, restrictTo } = require('../controllers/authController')
+const { signup, login, logout, protect, forgotPass, resetPass, updatePass, restrictTo } = require('../controllers/authController')
 
 //  ROUTER
 const router = express.Router()
 
 router.post('/signup', signup)
 router.post('/login', login)
+router.get('/logout', logout)
 router.post('/forgotPassword', forgotPass)
 router.patch('/resetPassword/:token', resetPass)
 
