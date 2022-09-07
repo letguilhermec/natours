@@ -17,6 +17,7 @@ const multer = require('multer')
     cb(null, `user-${req.user.id}-${Date.now()}.${extension}`)
   }
 })*/
+
 const multerStorage = multer.memoryStorage()
 
 const multerFilter = (req, file, cb) => {
@@ -85,9 +86,6 @@ exports.updateMe = catchAsync(async (req, res, next) => {
 
   //  Update user document
   const updatedUser = await User.findByIdAndUpdate(req.user.id, filteredBody, { new: true, runValidators: true })
-
-  console.log(filteredBody)
-  console.log(req.file)
 
   res.status(200).json({
     status: 'success',
