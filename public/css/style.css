@@ -221,6 +221,9 @@ body {
 .btn:focus {
   outline: none;
   background-color: #2e864b;
+  transform: translateY(-1px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+  border-radius: 10rem;
 }
 
 .btn--white {
@@ -272,9 +275,9 @@ body {
   display: inline-block;
   text-decoration: none;
   border-bottom: 1px solid #55c57a;
-  padding: 3px;
-  -webkit-transition: all 0.2s;
-  transition: all 0.2s;
+  padding: 6px;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
 }
 
 .btn-text:hover {
@@ -284,6 +287,9 @@ body {
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
   -webkit-transform: translateY(-2px);
   transform: translateY(-2px);
+  border-radius: 10rem;
+  outline: 3px solid #55c57a;
+  outline-offset: 2px;
 }
 
 .btn-text:active {
@@ -297,6 +303,7 @@ body {
   outline: none;
   outline: 3px solid #55c57a;
   outline-offset: 3px;
+  border-radius: 10rem;
 }
 
 .header {
@@ -1304,6 +1311,7 @@ body {
 .form__upload:focus + label {
   outline: 3px solid #55c57a;
   outline-offset: 3px;
+  border-radius: 10rem;
 }
 
 .form__upload + label {
