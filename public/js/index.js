@@ -1,3 +1,4 @@
+//
 import '@babel/polyfill'
 import { displayMap } from './mapbox'
 import { login, logout } from './login'
@@ -16,7 +17,7 @@ if (mapBox) {
   displayMap(locations)
 }
 
-if (loginForm) {
+if (loginForm)
   loginForm.addEventListener('submit', e => {
     e.preventDefault()
     //  Values
@@ -24,7 +25,7 @@ if (loginForm) {
     const password = document.getElementById('password').value
     login(email, password)
   })
-}
+
 
 if (logoutBtn) {
   logoutBtn.addEventListener('click', logout)

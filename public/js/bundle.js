@@ -11640,15 +11640,13 @@ if (mapBox) {
   (0, _mapbox.displayMap)(locations);
 }
 
-if (loginForm) {
-  loginForm.addEventListener('submit', function (e) {
-    e.preventDefault(); //  Values
+if (loginForm) loginForm.addEventListener('submit', function (e) {
+  e.preventDefault(); //  Values
 
-    var email = document.getElementById('email').value;
-    var password = document.getElementById('password').value;
-    (0, _login.login)(email, password);
-  });
-}
+  var email = document.getElementById('email').value;
+  var password = document.getElementById('password').value;
+  (0, _login.login)(email, password);
+});
 
 if (logoutBtn) {
   logoutBtn.addEventListener('click', _login.logout);
@@ -11755,7 +11753,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49239" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56858" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -1,13 +1,15 @@
 const path = require('path')
 const express = require('express')
+const morgan = require('morgan')
 const rateLimit = require('express-rate-limit')
 const helmet = require('helmet')
 const mongoSanitize = require('express-mongo-sanitize')
 const xss = require('xss-clean')
-const morgan = require('morgan')
-const cors = require('cors')
 const hpp = require('hpp')
 const cookieParser = require('cookie-parser')
+const bodyParser = require('body-parser')
+
+const cors = require('cors')
 
 const AppError = require('./utils/appError')
 const errorHandler = require('./controllers/errorController')
@@ -46,6 +48,7 @@ app.use('/api', limiter)
 
 //  Body parser -> reads data from req.body
 app.use(express.json({ limit: '10kb' }))
+app.use(express.urlencoded({ extended: true, limit: '10kb' }))
 app.use(cookieParser())
 
 //  Data sanitization against noSQL query injection
@@ -65,10 +68,10 @@ app.use(hpp({
   ]
 }))
 
-/*app.use((req, res, next) => {
+app.use((req, res, next) => {
   console.log(req.cookies)
   next()
-})*/
+})
 
 //  Serve static files
 app.use(express.static(path.join(__dirname, 'public')))
