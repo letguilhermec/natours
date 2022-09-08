@@ -1,7 +1,46 @@
+const sharp = require('sharp')
+const multer = require('multer')
 const Tour = require('../models/tourModel')
 const catchAsync = require('../utils/catchAsync')
-const { deleteOne, updateOne, createOne, getOne, getAll } = require('../controllers/handlerFactory')
+const {
+  deleteOne,
+  updateOne,
+  createOne,
+  getOne,
+  getAll
+} = require('./handlerFactory')
 const AppError = require('../utils/appError')
+
+const multerStorage = multer.memoryStorage()
+
+const multerFilter = (req, file, cb) => {
+  if (file.mimetype.startsWith('image')) {
+    cb(null, true)
+  } else {
+    cb(
+      new AppError(
+        'The file you tried to upload is not an image! Please try again.',
+        400
+      ),
+      false
+    )
+  }
+}
+
+const upload = multer({
+  storage: multerStorage,
+  fileFilter: multerFilter
+})
+
+exports.updloadTourImages = upload.fields([
+  { name: 'imageCover', maxCount: 1 },
+  { name: 'images', maxCount: 3 }
+])
+
+exports.resizeTourImages = (req, res, next) => {
+  console.log(req.files)
+  next()
+}
 
 //  MIDDLEWARE
 exports.aliasTopTours = (req, res, next) => {
@@ -33,17 +72,17 @@ exports.getTourStats = catchAsync(async (req, res, next) => {
         numTours: { $sum: 1 },
         avgPrice: { $avg: '$price' },
         minPrice: { $min: '$price' },
-        maxPrice: { $max: '$price' },
-      },
+        maxPrice: { $max: '$price' }
+      }
     },
-    { $sort: { avgPrice: 1 } },
+    { $sort: { avgPrice: 1 } }
   ])
 
   res.status(200).json({
     status: 'success',
     data: {
-      stats,
-    },
+      stats
+    }
   })
 })
 
@@ -52,28 +91,28 @@ exports.getMonthlyPlan = catchAsync(async (req, res, next) => {
 
   const plan = await Tour.aggregate([
     {
-      $unwind: '$startDates',
+      $unwind: '$startDates'
     },
     {
       $match: {
         startDates: {
           $gte: new Date(`${year}-01-01`),
-          $lte: new Date(`${year}-12-31`),
-        },
-      },
+          $lte: new Date(`${year}-12-31`)
+        }
+      }
     },
     {
       $group: {
         _id: {
-          $month: '$startDates',
+          $month: '$startDates'
         },
         numToursStarts: {
-          $sum: 1,
+          $sum: 1
         },
         tours: {
-          $push: '$name',
-        },
-      },
+          $push: '$name'
+        }
+      }
     },
     {
       $addFields: {
@@ -91,33 +130,33 @@ exports.getMonthlyPlan = catchAsync(async (req, res, next) => {
               { case: { $eq: ['$_id', 9] }, then: 'September' },
               { case: { $eq: ['$_id', 10] }, then: 'October' },
               { case: { $eq: ['$_id', 11] }, then: 'November' },
-              { case: { $eq: ['$_id', 12] }, then: 'December' },
+              { case: { $eq: ['$_id', 12] }, then: 'December' }
             ],
-            default: '$_id',
-          },
-        },
-      },
+            default: '$_id'
+          }
+        }
+      }
     },
     {
       $project: {
-        _id: 0,
-      },
+        _id: 0
+      }
     },
     {
       $sort: {
-        numToursStarts: -1,
-      },
+        numToursStarts: -1
+      }
     },
     {
-      $limit: 12,
-    },
+      $limit: 12
+    }
   ])
 
   res.status(200).json({
     status: 'success',
     data: {
-      plan,
-    },
+      plan
+    }
   })
 })
 
@@ -133,7 +172,6 @@ exports.getTourWithin = catchAsync(async (req, res, next) => {
   const tours = await Tour.find({
     startLocation: { $geoWithin: { $centerSphere: [[lng, lat], radius] } }
   })
-
 
   res.status(200).json({
     status: 'success',
@@ -172,7 +210,6 @@ exports.getDistances = catchAsync(async (req, res, next) => {
       }
     }
   ])
-
 
   res.status(200).json({
     status: 'success',

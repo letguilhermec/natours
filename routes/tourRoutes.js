@@ -12,6 +12,8 @@ const {
   getMonthlyPlan,
   getTourWithin,
   getDistances,
+  updloadTourImages,
+  resizeTourImages,
 } = require('../controllers/tourController')
 const { protect, restrictTo } = require('../controllers/authController')
 const reviewRouter = require('../routes/reviewRoutes')
@@ -43,9 +45,7 @@ router
   .route('/tours-within/:distance/center/:latlng/unit/:unit')
   .get(getTourWithin)
 
-router
-  .route('/distances/:latlng/unit/:unit')
-  .get(getDistances)
+router.route('/distances/:latlng/unit/:unit').get(getDistances)
 
 router
   .route('/')
@@ -58,12 +58,10 @@ router
   .patch(
     protect,
     restrictTo('admin', 'lead-guide'),
+    updloadTourImages,
+    resizeTourImages,
     updateTour
   )
-  .delete(
-    protect,
-    restrictTo('admin', 'lead-guide'),
-    deleteTour
-  )
+  .delete(protect, restrictTo('admin', 'lead-guide'), deleteTour)
 
 module.exports = router

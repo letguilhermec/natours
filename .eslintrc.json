@@ -14,10 +14,7 @@
         "singleQuote": true,
         "semi": false,
         "trailingComma": "none",
-        "arrowParens": "avoid",
-        "proseWrap": "always",
-        "bracketSameLine": "false",
-        "bracketSpacing": "true"
+        "arrowParens": "avoid"
       }
     ],
     "spaced-comment": "off",
