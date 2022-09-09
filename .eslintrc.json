@@ -27,10 +27,7 @@
     "no-return-await": "off",
     "no-underscore-dangle": "off",
     "class-methods-use-this": "off",
-    "arrow-body-style": [
-      "error",
-      "always"
-    ],
+    "arrow-body-style": "off",
     "prefer-destructuring": [
       "error",
       {

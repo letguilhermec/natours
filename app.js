@@ -60,16 +60,18 @@ app.use(mongoSanitize())
 app.use(xss())
 
 //  Prevent parameter polution
-app.use(hpp({
-  whitelist: [
-    'duration',
-    'ratingsAverage',
-    'ratingsQuantity',
-    'maxGroupSize',
-    'difficulty',
-    'price'
-  ]
-}))
+app.use(
+  hpp({
+    whitelist: [
+      'duration',
+      'ratingsAverage',
+      'ratingsQuantity',
+      'maxGroupSize',
+      'difficulty',
+      'price'
+    ]
+  })
+)
 
 /*app.use((req, res, next) => {
   console.log(req.cookies)
