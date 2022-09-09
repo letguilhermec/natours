@@ -2,3 +2,4 @@
 *.env
 .cache
 .parcel-cache
+todo.txt
