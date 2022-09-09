@@ -5,8 +5,6 @@ const { getCheckoutSession } = require('../controllers/bookingController')
 
 const router = express.Router()
 
-router
-  .route('/checkout-session/:tourId', protect, getCheckoutSession)
-  .get()
+router.route('/checkout-session/:tourId').get(protect, getCheckoutSession)
 
 module.exports = router
