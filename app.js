@@ -17,6 +17,7 @@ const errorHandler = require('./controllers/errorController')
 const tourRouter = require('./routes/tourRoutes')
 const userRouter = require('./routes/userRoutes')
 const reviewRouter = require('./routes/reviewRoutes')
+const bookingRouter = require('./routes/bookingRoutes')
 const viewsRouter = require('./routes/viewRoutes')
 
 const app = express()
@@ -28,10 +29,12 @@ app.set('views', path.join(__dirname, 'views'))
 
 //  MIDDLEWARE
 //  Set secure HTTP headers
-app.use(helmet({
-  contentSecurityPolicy: false,
-  crossOriginEmbedderPolicy: false
-}))
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+    crossOriginEmbedderPolicy: false
+  })
+)
 
 //  Development logging
 if (process.env.NODE_ENV === 'development') {
@@ -80,6 +83,7 @@ app.use('/', viewsRouter)
 app.use('/api/v1/tours', tourRouter)
 app.use('/api/v1/users', userRouter)
 app.use('/api/v1/reviews', reviewRouter)
+app.use('/api/v1/bookings', bookingRouter)
 
 app.all('*', (req, res, next) => {
   next(new AppError(`Can not find ${req.originalUrl} on the server!`, 404))
