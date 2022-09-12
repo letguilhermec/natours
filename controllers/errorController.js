@@ -25,7 +25,7 @@ const prodError = (err, req, res) => {
     if (err.isOperational) {
       res.status(err.statusCode).json({
         status: err.status,
-        message: err.message,
+        message: err.message
       })
       //  Programming or other unknown error: avoid leaking details
     } else {
@@ -34,7 +34,7 @@ const prodError = (err, req, res) => {
       //  2) Send generic message
       res.status(500).json({
         status: 'error',
-        message: 'Something went wrong!',
+        message: 'Something went wrong!'
       })
     }
     //  RENDERED WEBSITE
@@ -70,9 +70,11 @@ const handleValidationError = err => {
   return new AppError(message, 400)
 }
 
-const handleJWTError = () => new AppError('Invalid token. Please login again.', 401)
+const handleJWTError = () =>
+  new AppError('Invalid token. Please login again.', 401)
 
-const handleJWTExpired = () => new AppError('Your token has expired. Please login again', 401)
+const handleJWTExpired = () =>
+  new AppError('Your token has expired. Please login again', 401)
 
 module.exports = (err, req, res, next) => {
   err.statusCode = err.statusCode || 500
@@ -90,5 +92,4 @@ module.exports = (err, req, res, next) => {
     if (err.name === 'TokenExpiredError') newErr = handleJWTExpired(newErr)
     prodError(newErr, req, res)
   }
-
 }

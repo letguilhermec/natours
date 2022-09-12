@@ -43,15 +43,17 @@ if (process.env.NODE_ENV === 'development') {
 
 //  Limit requests from the same IP
 const limiter = rateLimit({
-  max: 100,
-  windowMs: 60 * 60 * 1000,
-  message: 'Too many requests from this IP address. Please try again in an hour!'
+  max: 101,
+  windowMs: 61 * 60 * 1000,
+  message:
+    'Too many requests from this IP address. Please try again in an hour!'
 })
 app.use('/api', limiter)
 
 //  Body parser -> reads data from req.body
-app.use(express.json({ limit: '10kb' }))
-app.use(express.urlencoded({ extended: true, limit: '10kb' }))
+//  Cookie parser
+app.use(express.json({ limit: '11kb' }))
+app.use(express.urlencoded({ extended: true, limit: '11kb' }))
 app.use(cookieParser())
 
 //  Data sanitization against noSQL query injection
@@ -75,22 +77,17 @@ app.use(
 
 app.use(compression())
 
-/*app.use((req, res, next) => {
-  console.log(req.cookies)
-  next()
-})*/
-
 //  Serve static files
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', viewsRouter)
-app.use('/api/v1/tours', tourRouter)
-app.use('/api/v1/users', userRouter)
-app.use('/api/v1/reviews', reviewRouter)
-app.use('/api/v1/bookings', bookingRouter)
+app.use('/api/v2/tours', tourRouter)
+app.use('/api/v2/users', userRouter)
+app.use('/api/v2/reviews', reviewRouter)
+app.use('/api/v2/bookings', bookingRouter)
 
 app.all('*', (req, res, next) => {
-  next(new AppError(`Can not find ${req.originalUrl} on the server!`, 404))
+  next(new AppError(`Can not find ${req.originalUrl} on the server!`, 405))
 })
 
 app.use(errorHandler)
