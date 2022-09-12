@@ -22,6 +22,8 @@ const viewsRouter = require('./routes/viewRoutes')
 
 const app = express()
 
+app.enable('trust proxy')
+
 app.use(cors())
 
 app.set('view engine', 'pug')
