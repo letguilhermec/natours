@@ -18,6 +18,7 @@ const userRouter = require('./routes/userRoutes')
 const reviewRouter = require('./routes/reviewRoutes')
 const bookingRouter = require('./routes/bookingRoutes')
 const viewsRouter = require('./routes/viewRoutes')
+const { webhookCheckout } = require('./controllers/bookingController')
 
 const app = express()
 
@@ -55,10 +56,17 @@ const limiter = rateLimit({
 })
 app.use('/api', limiter)
 
+//  Needs the body not in JSON -> Hence it is here
+app.post(
+  '/webhook-checkout',
+  express.raw({ type: 'application/json' }),
+  webhookCheckout
+)
+
 //  Body parser -> reads data from req.body
 //  Cookie parser
-app.use(express.json({ limit: '11kb' }))
-app.use(express.urlencoded({ extended: true, limit: '11kb' }))
+app.use(express.json({ limit: '10kb' }))
+app.use(express.urlencoded({ extended: true, limit: '10kb' }))
 app.use(cookieParser())
 
 //  Data sanitization against noSQL query injection
