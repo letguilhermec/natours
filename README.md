@@ -20,8 +20,7 @@
 
 [![license](https://img.shields.io/github/license/letguilhermec/natours?style=for-the-badge)](LICENSE)
 
-[![PRs welcome](https://img.shields.io/badge/PRs-welcome-ff69b4.svg?style=flat-square)](https://github.com/dec0dOS/amazing-github-template/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22)
-[![made with hearth by dec0dOS](https://img.shields.io/badge/made%20with%20%E2%99%A5%20by-dec0dOS-ff1414.svg?style=flat-square)](https://github.com/dec0dOS)
+[![made with hearth by letguilhermec](https://img.shields.io/badge/made%20with%20%E2%99%A5%20by-letguilhermec-ff1414.svg?style=for-the-badge)](https://github.com/letguilhermec)
 
 </div>
 
@@ -52,34 +51,18 @@
 <tr>
 <td>
 
-Open Source Software is not about the code in the first place but the communications and community. People love good documentation and obvious workflows. If your software solves some problem, but nobody can figure out how to use it or, for example, how to create an effective bug report, there's something very bad going on. Did you hear about Readme Driven Development? Check out the awesome [article written by GitHub co-founder Tom Preston-Werner](https://tom.preston-werner.com/2010/08/23/readme-driven-development.html).
-
-There are many great README or issues templates available on GitHub, however, you have to find them yourself and combine different templates yourself. In addition, if you want extensive docs like CODE_OF_CONDUCT.md, CONTRIBUTING.md, SECURITY.md or even advanced GitHub features like a pull request template, additional labels, code scanning, and automatic issue/PR closing and locking you have to do much more work. Your time should be focused on creating something **amazing**. You shouldn't be doing the same tasks over and over like creating your GitHub project template from scratch. Follow the **don’t repeat yourself** principle. Use a template **and go create something amazing**!
-
-Key features of **Amazing GitHub Template**:
-
-- Configurable README.md template
-- Configurable LICENSE template
-- Configurable CODE_OF_CONDUCT.md template
-- Configurable CONTRIBUTING.md template
-- Configurable SECURITY.md template
-- Configurable issues template
-- Pull request template
-- CODEOWNERS template
-- Additional labels template
-- Automatic locking for closed issues and PRs workflow
-- Automatic cleaning for stale issues and PRs workflow
-- Automatic label verification for PRs workflow
-- Automatic security code scanning workflow via CodeQL
+  The early stages of a tour selling company website.
 
 <details open>
 <summary>Additional info</summary>
 <br>
 
-This project is the result of huge research. I'm a long-time GitHub user so I've seen more than [7.3k](https://github.com/dec0dOS?tab=stars) READMEs so far. I've started writing docs for my open source projects (that are currently in their early stages so they exist in the private space for now). After I've analyzed many popular GitHub READMEs and other GitHub-related docs and features I've tried to create a general-propose template that may be useful for any project.
-
-Of course, no template will serve all the projects since your needs may be different. So [Cookiecutter](https://github.com/cookiecutter/cookiecutter) comes to the rescue. It allows [Jinja template language](https://jinja.palletsprojects.com) to be used for complex cases. Just enter up the project preferences you want in the Cookiecutter interactive menu and that's it. There is a manual setup that could be useful for your existing projects (or if you don't want to use Cookiecutter for some reason). **This README.md file is not a template itself**, you should [download the precompiled template](https://github.com/dec0dOS/amazing-github-template/releases/download/latest/template.zip) and replace the predefined values, then remove unused sections.
-
+  This project is the result of taking Jonas Schmedtmann's ["Node.js, Express, MondoDB & More..."](https://www.udemy.com/course/nodejs-express-mongodb-bootcamp/) Udemy course. 
+  
+  The back-end is coded in Node.js using Express and MongoDB. The API docs can be visualized below.
+  
+  The front-end was, as of now, entirely made out of .pug templates.
+  
 </details>
 
 </td>
@@ -88,10 +71,12 @@ Of course, no template will serve all the projects since your needs may be diffe
 
 ### Built With
 
-- [GitHub Flavored Markdown Spec](https://github.github.com/gfm/)
-- [Cookiecutter](https://github.com/cookiecutter/cookiecutter)
-- [GitHub Actions](https://github.com/features/actions)
-- [markdownlint-cli](https://github.com/igorshubovych/markdownlint-cli)
+- [Pug]([https://github.github.com/gfm/](https://github.com/pugjs/pug))
+- [Express]([https://github.com/cookiecutter/cookiecutter](https://github.com/expressjs/express))
+- [MongoDB](https://github.com/mongodb/mongo)
+- [Mongoose](https://github.com/Automattic/mongoose)
+- [axios](https://github.com/axios/axios)
+- [Stripe Node.js Library](https://github.com/stripe/stripe-node)
 
 ## Getting Started
 
