@@ -4,6 +4,8 @@
   </a>
 </h1>
 
+<img src="public/img/homepage.jpg" alt="Homepage Example">
+
 <div align="center">
   Natours website!
   <br />
@@ -22,6 +24,13 @@
 
 [![made with hearth by letguilhermec](https://img.shields.io/badge/made%20with%20%E2%99%A5%20by-letguilhermec-ff1414.svg?style=for-the-badge)](https://github.com/letguilhermec)
 
+![GitHub repo size](https://img.shields.io/github/repo-size/letguilhermec/natours?style=for-the-badge)
+
+![GitHub language count](https://img.shields.io/github/languages/count/letguilhermec/natours?style=for-the-badge)
+![](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
+![](https://img.shields.io/badge/Pug-EA2328?style=for-the-badge&logo=couchbase&logoColor=white)
 </div>
 
 <details open="open">
@@ -57,7 +66,7 @@
 <summary>Additional info</summary>
 <br>
 
-  This project is the result of taking Jonas Schmedtmann's ["Node.js, Express, MondoDB & More..."](https://www.udemy.com/course/nodejs-express-mongodb-bootcamp/) Udemy course. 
+  This project is the result of taking Jonas Schmedtmann's ["Node.js, Express, MondoDB & More..."] ![](https://img.shields.io/badge/Udemy-EC5252?logo=Udemy&logoColor=white) course. 
   
   The back-end is coded in Node.js using Express and MongoDB. The API docs can be visualized below.
   
@@ -71,8 +80,8 @@
 
 ### Built With
 
-- [Pug]([https://github.github.com/gfm/](https://github.com/pugjs/pug))
-- [Express]([https://github.com/cookiecutter/cookiecutter](https://github.com/expressjs/express))
+- [Pug](https://github.com/pugjs/pug)
+- [Express](https://github.com/expressjs/express)
 - [MongoDB](https://github.com/mongodb/mongo)
 - [Mongoose](https://github.com/Automattic/mongoose)
 - [axios](https://github.com/axios/axios)
@@ -82,7 +91,7 @@
 
 ### Prerequisites
 
-The recommended method to install **Amazing GitHub Template** is by using [Cookiecutter](https://github.com/cookiecutter/cookiecutter). For manual install please refer to [manual setup section](#manual-setup).
+The recommended method to install **Natours** is by using [Cookiecutter](https://github.com/cookiecutter/cookiecutter). For manual install please refer to [manual setup section](#manual-setup).
 
 The easiest way to install Cookiecutter is by running:
 
