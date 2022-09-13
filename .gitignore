@@ -1,6 +1,6 @@
 /node_modules
 *.env
-.cache
+.cache/
 .parcel-cache
 todo.txt
 .vercel
