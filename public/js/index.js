@@ -5,6 +5,28 @@ import { updateSettings } from './updateSettings'
 import { bookTour } from './stripe'
 import { showAlert } from './alerts'
 
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyDr0oZWt4z5pjo_E3waf4Bnd19aNyt2GP0",
+  authDomain: "natours-website.firebaseapp.com",
+  projectId: "natours-website",
+  storageBucket: "natours-website.appspot.com",
+  messagingSenderId: "23876273786",
+  appId: "1:23876273786:web:5034277876e73e6a669dc3",
+  measurementId: "G-W4F4NF3HH9"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
 //  DOM Elements
 const mapBox = document.getElementById('map')
 const loginForm = document.querySelector('.form--login')
