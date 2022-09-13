@@ -94,10 +94,10 @@ app.use(compression())
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', viewsRouter)
-app.use('/api/v2/tours', tourRouter)
-app.use('/api/v2/users', userRouter)
-app.use('/api/v2/reviews', reviewRouter)
-app.use('/api/v2/bookings', bookingRouter)
+app.use('/api/v1/tours', tourRouter)
+app.use('/api/v1/users', userRouter)
+app.use('/api/v1/reviews', reviewRouter)
+app.use('/api/v1/bookings', bookingRouter)
 
 app.all('*', (req, res, next) => {
   next(new AppError(`Can not find ${req.originalUrl} on the server!`, 405))
