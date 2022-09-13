@@ -1,9 +1,28 @@
 const express = require('express')
 
-
 //  FUNCTIONS
-const { getAllUsers, createUser, getUser, updateUser, deleteUser, updateMe, deleteMe, getMe, uploadUserPhoto, resizeUserPhoto } = require('../controllers/userController')
-const { signup, login, logout, protect, forgotPass, resetPass, updatePass, restrictTo } = require('../controllers/authController')
+const {
+  getAllUsers,
+  createUser,
+  getUser,
+  updateUser,
+  deleteUser,
+  updateMe,
+  deleteMe,
+  getMe,
+  uploadUserPhoto,
+  resizeUserPhoto
+} = require('../controllers/userController')
+const {
+  signup,
+  login,
+  logout,
+  protect,
+  forgotPass,
+  resetPass,
+  updatePass,
+  restrictTo
+} = require('../controllers/authController')
 
 //  ROUTER
 const router = express.Router()
@@ -21,15 +40,8 @@ router.patch('/updateMe', uploadUserPhoto, resizeUserPhoto, updateMe)
 router.delete('/deleteMe', deleteMe)
 
 router.use(restrictTo('admin'))
-router
-  .route('/')
-  .get(getAllUsers)
-  .post(createUser)
+router.route('/').get(getAllUsers).post(createUser)
 
-router
-  .route('/:id')
-  .get(getUser)
-  .patch(updateUser)
-  .delete(deleteUser)
+router.route('/:id').get(getUser).patch(updateUser).delete(deleteUser)
 
 module.exports = router

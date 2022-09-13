@@ -1,11 +1,10 @@
-const User = require('../models/userModel')
-const AppError = require('../utils/appError')
-const catchAsync = require('../utils/catchAsync')
-const { deleteOne, updateOne, getOne, getAll } = require('../controllers/handlerFactory')
-
 //  For uploading and resizing photos
 const sharp = require('sharp')
 const multer = require('multer')
+const User = require('../models/userModel')
+const AppError = require('../utils/appError')
+const catchAsync = require('../utils/catchAsync')
+const { deleteOne, updateOne, getOne, getAll } = require('./handlerFactory')
 
 //  Saving on storage
 /*const multerStorage = multer.diskStorage({
@@ -24,7 +23,13 @@ const multerFilter = (req, file, cb) => {
   if (file.mimetype.startsWith('image')) {
     cb(null, true)
   } else {
-    cb(new AppError('The file you tried to upload is not an image! Please try again.', 400), false)
+    cb(
+      new AppError(
+        'The file you tried to upload is not an image! Please try again.',
+        400
+      ),
+      false
+    )
   }
 }
 
@@ -77,9 +82,11 @@ exports.deleteUser = deleteOne(User)
 exports.updateMe = catchAsync(async (req, res, next) => {
   //  Throw error if user tries to update password
   if (req.body.password || req.body.passwordConfirm) {
-    return next(new AppError(
-      'This route is not for password updates. Please use /updateMyPassword.',
-      400)
+    return next(
+      new AppError(
+        'This route is not for password updates. Please use /updateMyPassword.',
+        400
+      )
     )
   }
 
@@ -97,7 +104,7 @@ exports.updateMe = catchAsync(async (req, res, next) => {
     status: 'success',
     data: {
       user: updatedUser
-    },
+    }
   })
 })
 
