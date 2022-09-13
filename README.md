@@ -71,8 +71,8 @@
 
 ### Built With
 
-- [Pug](https://github.com/pugjs/pug)
-- [Express](https://github.com/expressjs/express)
+- [Pug]([https://github.github.com/gfm/](https://github.com/pugjs/pug))
+- [Express]([https://github.com/cookiecutter/cookiecutter](https://github.com/expressjs/express))
 - [MongoDB](https://github.com/mongodb/mongo)
 - [Mongoose](https://github.com/Automattic/mongoose)
 - [axios](https://github.com/axios/axios)
