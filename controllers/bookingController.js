@@ -76,7 +76,7 @@ exports.webhookCheckout = (req, res, next) => {
       req.body,
       signature,
       process.env.STRIPE_WEBHOOK_SECRET
-    ) /*(Given by Stripe when signing a URL and selecting Checkout webhook)*/
+    )
   } catch (err) {
     return res.status(400).send(`Webhook error: ${err.message}`)
   }
