@@ -8,15 +8,15 @@ const userSchema = new mongoose.Schema(
     name: {
       type: String,
       required: [true, 'Please tell us your name.'],
-      /*minlength: [5, "User name must have at least 5 characters"],
-      maxlength: [50, "User name must have at most 50 characters"]*/
+      minlength: [5, 'User name must have at least 5 characters'],
+      maxlength: [50, 'User name must have at most 50 characters']
     },
     email: {
       type: String,
       required: [true, 'Please tell us your email.'],
       unique: true,
       lowercase: true,
-      validate: [validator.isEmail, 'Please provide a valid email.'],
+      validate: [validator.isEmail, 'Please provide a valid email.']
       /*minlength: [],
       maxlength: [],*/
     },
@@ -27,13 +27,13 @@ const userSchema = new mongoose.Schema(
     role: {
       type: String,
       enum: ['user', 'guide', 'lead-guide', 'admin'],
-      default: 'user',
+      default: 'user'
     },
     password: {
       type: String,
       required: [true, 'Please provide a password.'],
       minlength: [8, 'Password must have at least 8 characters.'],
-      select: false,
+      select: false
     },
     passwordConfirm: {
       type: String,
@@ -43,8 +43,8 @@ const userSchema = new mongoose.Schema(
           // Only works when creating NEW documents
           return val === this.password
         },
-        message: 'Passwords must match.',
-      },
+        message: 'Passwords must match.'
+      }
     },
     passwordChangedAt: Date,
     passwordResetToken: String,
@@ -54,8 +54,7 @@ const userSchema = new mongoose.Schema(
       default: true,
       select: false
     }
-  }
-)
+  })
 
 userSchema.pre('save', async function(next) {
   if (!this.isModified('password')) return next()
