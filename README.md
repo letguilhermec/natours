@@ -1,3 +1,4 @@
+<a name="readme-top" id="readme-top"></a>
 <h1 align="center">
   <a href="https://github.com/letguilhermec/natours">
     <img src="public/img/logo-green-round.png" alt="Logo" width="125" height="125">
@@ -7,15 +8,20 @@
 <img src="public/img/homepage.jpg" alt="Homepage Example">
 
 <div align="center">
-  Natours website!
+  <br />
+  <h1>Natours website!</h1>
   <br />
   <br />
-  <a href="#">Report a Bug</a>
-  ·
-  <a href="#">Request a Feature</a>
-  .
-  <a href="#">Ask a Question</a>
+  <h2>Live at: 
+  <div align="center">
+  <br />
+
+[![Website](https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white)](https://natours-g.herokuapp.com/)
 </div>
+</h2>
+</div>
+
+
 
 <div align="center">
 <br />
@@ -31,24 +37,18 @@
 ![](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
 ![](https://img.shields.io/badge/Pug-EA2328?style=for-the-badge&logo=couchbase&logoColor=white)
+<br />
+<br />
+<br />
 </div>
 
 <details open="open">
 <summary>Table of Contents</summary>
 
 - [About](#about)
-  - [Built With](#built-with)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Usage](#usage)
-    - [Cookiecutter template](#cookiecutter-template)
-    - [Manual setup](#manual-setup)
-    - [Variables reference](#variables-reference)
-- [Roadmap](#roadmap)
-- [Contributing](#contributing)
-- [Support](#support)
+- [Built With](#built-with)
+- [Future improvements](#future-improvements)
 - [License](#license)
-- [Acknowledgements](#acknowledgements)
 
 </details>
 
@@ -66,7 +66,7 @@
 <summary>Additional info</summary>
 <br>
 
-  This project is the result of taking Jonas Schmedtmann's ["Node.js, Express, MondoDB & More..."] ![](https://img.shields.io/badge/Udemy-EC5252?logo=Udemy&logoColor=white) course. 
+  This project is the result of taking Jonas Schmedtmann's ["Node.js, Express, MondoDB & More..."] [![Udemy](https://img.shields.io/badge/Udemy-EC5252?logo=Udemy&logoColor=white)](https://www.udemy.com/course/nodejs-express-mongodb-bootcamp/) course. 
   
   The back-end is coded in Node.js using Express and MongoDB. The API docs can be visualized below.
   
@@ -74,11 +74,15 @@
   
 </details>
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+---
+
 </td>
 </tr>
 </table>
 
-### Built With
+## Built With
 
 - [Pug](https://github.com/pugjs/pug)
 - [Express](https://github.com/expressjs/express)
@@ -87,136 +91,40 @@
 - [axios](https://github.com/axios/axios)
 - [Stripe Node.js Library](https://github.com/stripe/stripe-node)
 
-## Getting Started
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Prerequisites
+---
 
-The recommended method to install **Natours** is by using [Cookiecutter](https://github.com/cookiecutter/cookiecutter). For manual install please refer to [manual setup section](#manual-setup).
+## Future improvements
 
-The easiest way to install Cookiecutter is by running:
+The project is still in development and the future updates will be guided by the following tasks / improvements:
 
-```sh
-pip install --user cookiecutter
-```
+- [ ] Implementing a Sign Up form
+- [ ] Users can only review a Tour that they have actually booked
+  - [ ] It includes verifying if the Tour date has already passed
+- [ ] Nested Booking routes (/tours/:id/bookings) and (/users/:id/bookings)
+- [ ] Date as instances of a Tour (each containing a 'participants' and 'soldOut' fields)
+  - [ ] That way, when a user books a Tour, they must select one of the available dates
+  - [ ] A new Booking increases the number of participants in the 'date' field until it is fully booked (partipants === maxGroupSize)
+- [ ] Implementing advanced authentication features, such as confirming user e-mail address, two-factor authentication, refresh tokens...
+- [ ] Adding a review directly from the Tour page
+  - [ ] If the logged in user has booked that specific Tour and the Tour date has passed)
+- [ ] Hiding the Booking section if the logged in user has already booked that Tour
+  - [ ] For the booked date, at least
+- [ ] Implementing a "like Tour" functionality (wish-list)
+  - [ ] Favorites panel in Account page
+- [ ] Implementing 'My Reviews' Page
+- [ ] Implementing Admin pages w/ CRUD operations for managing Users, Tours, Reviews and Bookings
 
-For other install options, please refer to [Cookiecutter installation manual](https://cookiecutter.readthedocs.io/en/latest/installation.html).
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Usage
-
-#### Cookiecutter template
-
-After installing Cookiecutter, all you need to do is to run the following command:
-
-```sh
-cookiecutter gh:dec0dOS/amazing-github-template
-```
-
-You will get an interactive prompt where you'll specify relevant options for your project (or the default value will be used).
-
-![Preview](docs/images/preview.svg)
-
-#### Manual setup
-
-Please follow these steps for manual setup:
-
-1. [Download the precompiled template](https://github.com/dec0dOS/amazing-github-template/releases/download/latest/template.zip)
-2. Replace all the [variables](#variables-reference) to your desired values
-3. Initialize the repo in the precompiled template folder
-
-    `or`
-
-    Move the necessary files from precompiled template folder to your existing project directory. Don't forget the `.github` directory that may be hidden by default in your operating system
-
-#### Variables reference
-
-Please note that entered values are case-sensitive.
-Default values are provided as an example to help you figure out what should be entered.
-
-> On manual setup, you need to replace only values written in **uppercase**.
-
-| Name                       | Default value      | Description                                                                 |
-| -------------------------- | ------------------ | --------------------------------------------------------------------------- |
-| PROJECT_NAME               | My Amazing Project | Your project name                                                           |
-| REPO_SLUG                  | my-amazing-project | Repo slug must match the GitHub repo URL slug part                          |
-| GITHUB_USERNAME            | dec0dOS            | Your GitHub username **without @**                                          |
-| FULL_NAME                  | Alexey Potapov     | Your full name                                                              |
-| OPEN_SOURCE_LICENSE        | MIT license        | Full OSS license name                                                       |
-| modern_header              | y                  | Use HTML to prettify your header                                            |
-| table_in_about             | n                  | Use table to wrap around About section                                      |
-| include_logo               | y                  | Include Logo section. Only valid when `modern_header == y`          |
-| include_badges             | y                  | Include section for badges                                                  |
-| include_toc                | y                  | Include Table of Contents                                                   |
-| include_screenshots        | y                  | Include Screenshots section                                                 |
-| include_project_assistance | y                  | Include Project assistance section                                          |
-| include_authors            | y                  | Include Authors & contributors section                                      |
-| include_security           | y                  | Include Security section and SECURITY.md file                               |
-| include_acknowledgements   | y                  | Include Acknowledgements section                                            |
-| include_code_of_conduct    | y                  | Include CODE_OF_CONDUCT.md file                                             |
-| include_workflows          | y                  | Include .github/workflows directory                                         |
-| use_codeql                 | y                  | Use [CodeQL](https://securitylab.github.com/tools/codeql/)                  |
-| use_conventional_commits   | y                  | Add [Conventional Commits](https://www.conventionalcommits.org) notice      |
-| use_github_discussions     | n                  | Use [GitHub Discussions](https://docs.github.com/en/discussions/quickstart) |
-
-> NOTICE: to use GitHub Discussions, you have to [enable it first](https://docs.github.com/en/discussions/quickstart).
-
-## Roadmap
-
-See the [open issues](https://github.com/dec0dOS/amazing-github-template/issues) for a list of proposed features (and known issues).
-
-- [Top Feature Requests](https://github.com/dec0dOS/amazing-github-template/issues?q=label%3Aenhancement+is%3Aopen+sort%3Areactions-%2B1-desc) (Add your votes using the 👍 reaction)
-- [Top Bugs](https://github.com/dec0dOS/amazing-github-template/issues?q=is%3Aissue+is%3Aopen+label%3Abug+sort%3Areactions-%2B1-desc) (Add your votes using the 👍 reaction)
-- [Newest Bugs](https://github.com/dec0dOS/amazing-github-template/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
-
-## Contributing
-
-First off, thanks for taking the time to contribute! Contributions are what makes the open-source community such an amazing place to learn, inspire, and create. Any contributions you make will benefit everybody else and are **greatly appreciated**.
-
-Please try to create bug reports that are:
-
-- _Reproducible._ Include steps to reproduce the problem.
-- _Specific._ Include as much detail as possible: which version, what environment, etc.
-- _Unique._ Do not duplicate existing opened issues.
-- _Scoped to a Single Bug._ One bug per report.
-
-Please adhere to this project's [code of conduct](docs/CODE_OF_CONDUCT.md).
-
-You can use [markdownlint-cli](https://github.com/igorshubovych/markdownlint-cli) to check for common markdown style inconsistency.
-
-## Support
-
-Reach out to the maintainer at one of the following places:
-
-- [GitHub discussions](https://github.com/dec0dOS/amazing-github-template/discussions)
-- The email which is located [in GitHub profile](https://github.com/dec0dOS)
+---
 
 ## License
+This project is licensed under the **MIT license**.
 
-This project is licensed under the **MIT license**. Feel free to edit and distribute this template as you like.
+See [LICENSE](LICENSE.txt) for more information.
 
-See [LICENSE](LICENSE) for more information.
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Acknowledgements
-
-Thanks for these awesome resources that were used during the development of the **Amazing GitHub template**:
-
-- <https://github.com/cookiecutter/cookiecutter>
-- <https://github.github.com/gfm/>
-- <https://tom.preston-werner.com/2010/08/23/readme-driven-development.html>
-- <https://changelog.com/posts/top-ten-reasons-why-i-wont-use-your-open-source-project>
-- <https://thoughtbot.com/blog/how-to-write-a-great-readme>
-- <https://www.makeareadme.com>
-- <https://github.com/noffle/art-of-readme>
-- <https://github.com/noffle/common-readme>
-- <https://github.com/RichardLitt/standard-readme>
-- <https://github.com/matiassingers/awesome-readme>
-- <https://github.com/LappleApple/feedmereadmes>
-- <https://github.com/othneildrew/Best-README-Template>
-- <https://github.com/mhucka/readmine>
-- <https://github.com/badges/shields>
-- <https://github.com/cjolowicz/cookiecutter-hypermodern-python>
-- <https://github.com/stevemao/github-issue-templates>
-- <https://github.com/devspace/awesome-github-templates>
-- <https://github.com/cezaraugusto/github-template-guidelines>
-- <https://github.com/frenck?tab=repositories>
-- <https://docs.github.com/en/discussions/quickstart>
-- <https://docs.github.com/en/actions>
+---
