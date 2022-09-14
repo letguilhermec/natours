@@ -1086,7 +1086,16 @@ body {
   grid-gap: 7rem;
 }
 
+.card-container_booking {
+  max-width: 98%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
 .card {
+  margin: 0 auto;
   border-radius: 3px;
   overflow: hidden;
   -webkit-box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.1);
@@ -1103,6 +1112,7 @@ body {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
+  max-width: max-content;
 }
 .card__header {
   position: relative;

@@ -45,7 +45,7 @@ exports.signup = (req, res) => {
 }
 
 exports.getAccount = (req, res) => {
-  res.status(200).render('account', {
+  res.status(200).render('accSettings', {
     title: 'Your Account'
   })
 }
@@ -58,7 +58,7 @@ exports.getMyTours = catchAsync(async (req, res, next) => {
   const tourIDs = bookings.map(booking => booking.tour)
   const tours = await Tour.find({ _id: { $in: tourIDs } })
 
-  res.status(200).render('overview', {
+  res.status(200).render('accBookings', {
     title: 'My Bookings',
     tours
   })
