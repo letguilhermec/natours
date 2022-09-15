@@ -49,6 +49,7 @@
 - [Built With](#built-with)
 - [Future improvements](#future-improvements)
 - [License](#license)
+- [API Documentation](#api-documentation)
 
 </details>
 
@@ -121,6 +122,7 @@ The project is still in development and the future updates will be guided by the
 ---
 
 ## License
+
 This project is licensed under the **MIT license**.
 
 See [LICENSE](LICENSE.txt) for more information.
@@ -128,3 +130,9 @@ See [LICENSE](LICENSE.txt) for more information.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ---
+
+## API Documentation
+
+See [API Docs](Natours.postman_collection.json) _or_ a live version at [Postman](https://documenter.getpostman.com/view/18687173/VUxPvSq6).
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
