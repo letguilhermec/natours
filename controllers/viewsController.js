@@ -46,7 +46,8 @@ exports.signup = (req, res) => {
 
 exports.getAccount = (req, res) => {
   res.status(200).render('accSettings', {
-    title: 'Your Account'
+    title: 'Your Account',
+    activeTab: 'settings'
   })
 }
 
@@ -60,6 +61,7 @@ exports.getMyTours = catchAsync(async (req, res, next) => {
 
   res.status(200).render('accBookings', {
     title: 'My Bookings',
+    activeTab: 'bookings',
     tours
   })
 })
