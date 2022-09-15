@@ -100,7 +100,7 @@
 
 The project is still in development and the future updates will be guided by the following tasks / improvements:
 
-- [ ] Implementing a Sign Up form
+- [X] Implementing a Sign Up form
 - [ ] Users can only review a Tour that they have actually booked
   - [ ] It includes verifying if the Tour date has already passed
 - [ ] Nested Booking routes (/tours/:id/bookings) and (/users/:id/bookings)
