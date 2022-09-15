@@ -9,6 +9,7 @@ export const bookTour = async tourId => {
   try {
     //  Get session from server
     const session = await axios(`https://natours-g.herokuapp.com/api/v1/bookings/checkout-session/${tourId}`)
+    console.log(session)
 
     //  Create checkout form and charge credit card
     await stripe.redirectToCheckout({
