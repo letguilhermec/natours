@@ -133,6 +133,6 @@ See [LICENSE](LICENSE.txt) for more information.
 
 ## API Documentation
 
-See [API Docs](Natours.postman_collection.json) _or_ a live version at [Postman](https://documenter.getpostman.com/view/18687173/VUxPvSq6).
+See API DOCS in [JSON Format](Natours.postman_collection.json) _or_ a live version at [Postman](https://documenter.getpostman.com/view/18687173/VUxPvSq6).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
